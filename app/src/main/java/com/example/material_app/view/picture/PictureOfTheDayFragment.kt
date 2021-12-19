@@ -1,11 +1,14 @@
 package com.example.material_app.view.picture
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -75,7 +78,6 @@ class PictureOfTheDayFragment : Fragment() {
     }
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -143,5 +145,32 @@ class PictureOfTheDayFragment : Fragment() {
                 binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
             }
         }
+
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    Log.d(TAG, "Fragment back pressed invoked")
+                    if (isMain) {
+                        System.exit(0)
+                    } else {
+                        isMain = true
+                        binding.bottomAppBar.navigationIcon = ContextCompat.getDrawable(
+                            context,
+                            R.drawable.ic_hamburger_menu_bottom_bar
+                        )
+                        binding.bottomAppBar.fabAlignmentMode =
+                            BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+                        binding.fab.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                context,
+                                R.drawable.ic_plus_fab
+                            )
+                        )
+                        binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
+                    }
+                }
+            }
+            )
     }
 }
