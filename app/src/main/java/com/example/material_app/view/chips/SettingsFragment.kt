@@ -6,17 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import com.example.material_app.R
-import com.example.material_app.databinding.FragmentChipsBinding
-import com.example.material_app.databinding.FragmentMainBinding
-import com.example.material_app.viewmodel.PictureOfTheDayViewModel
+import com.example.material_app.databinding.FragmentSettingsBinding
 import com.google.android.material.chip.Chip
 
 
-class ChipsFragment : Fragment() {
-    private var _binding: FragmentChipsBinding? = null
-    val binding: FragmentChipsBinding
+class SettingsFragment : Fragment() {
+    private var _binding: FragmentSettingsBinding? = null
+    val binding: FragmentSettingsBinding
         get() {
             return _binding!!
         }
@@ -32,7 +28,7 @@ class ChipsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentChipsBinding.inflate(inflater, container, false)
+        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -53,6 +49,6 @@ class ChipsFragment : Fragment() {
 
         @JvmStatic
         fun newInstance() =
-            ChipsFragment()
+            SettingsFragment()
     }
 }
