@@ -21,26 +21,40 @@ class PictureOfTheDayViewModel(
     fun sendServerRequest() {
         liveDataForViewToObserve.value = PictureOfTheDayState.Loading(0)
         val apiKey: String = BuildConfig.NASA_API_KEY
-        if (apiKey.isBlank()) { // TODO (проверить "")
+        if (apiKey.isBlank()) { //
             liveDataForViewToObserve.value = PictureOfTheDayState.Error(Throwable("wrong key"))
         } else {
             retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey).enqueue(callback)
         }
     }
+
+    fun sendServerRequest(date: String) {
+        liveDataForViewToObserve.value = PictureOfTheDayState.Loading(0)
+        val apiKey: String = BuildConfig.NASA_API_KEY
+        if (apiKey.isBlank()) {
+            liveDataForViewToObserve.value = PictureOfTheDayState.Error(Throwable("wrong key"))
+        } else {
+            retrofitImpl.getRetrofitImpl().getPictureOfTheDay(apiKey, date).enqueue(callback)
+        }
+    }
+
     private val callback = object : Callback<PictureOfTheDayResponseData> {
         override fun onResponse(
             call: Call<PictureOfTheDayResponseData>,
             response: Response<PictureOfTheDayResponseData>
         ) {
-            if(response.isSuccessful&&response.body()!=null){
+            if (response.isSuccessful && response.body() != null) {
                 liveDataForViewToObserve.value = PictureOfTheDayState.Success(response.body()!!)
-            }else{
-                //TODO("уловить ошибку")
+            } else {
+                liveDataForViewToObserve.value =
+                    PictureOfTheDayState.Error(IllegalAccessException("Exception"))
+
             }
         }
 
         override fun onFailure(call: Call<PictureOfTheDayResponseData>, t: Throwable) {
-            //TODO("уловить ошибку")
+            liveDataForViewToObserve.value =
+                PictureOfTheDayState.Error(IllegalAccessException("Exception"))
         }
 
     }

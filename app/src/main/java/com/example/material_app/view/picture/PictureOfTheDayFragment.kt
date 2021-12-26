@@ -15,12 +15,16 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.material_app.R
 import com.example.material_app.databinding.FragmentMainBinding
+import com.example.material_app.view.API.ApiActivity
+import com.example.material_app.view.API.ApiBottomActivity
 import com.example.material_app.view.MainActivity
 import com.example.material_app.view.chips.SettingsFragment
 import com.example.material_app.viewmodel.PictureOfTheDayState
 import com.example.material_app.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PictureOfTheDayFragment : Fragment() {
 
@@ -53,8 +57,23 @@ class PictureOfTheDayFragment : Fragment() {
             })
         }
 
+        binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
+            when(checkedId){
+                R.id.yestrday ->{viewModel.sendServerRequest(takeDate(-1))}
+                R.id.today ->{viewModel.sendServerRequest()}
+            }
+        }
+
         setBottomAppBar()
 
+    }
+
+    private fun takeDate(count: Int): String {
+        val currentDate = Calendar.getInstance()
+        currentDate.add(Calendar.DAY_OF_MONTH, count)
+        val format1 = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        format1.timeZone = TimeZone.getTimeZone("EST")
+        return format1.format(currentDate.time)
     }
 
     private fun renderData(state: PictureOfTheDayState) {
@@ -100,7 +119,12 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
+            R.id.api_activity ->
+            startActivity(Intent(requireContext(), ApiActivity::class.java))
+
+            R.id.api_bottom_activity -> {
+                startActivity(Intent(requireContext(), ApiBottomActivity::class.java))
+            }
             R.id.app_bar_settings -> requireActivity().supportFragmentManager.beginTransaction()
                 .replace(
                     R.id.container,

@@ -20,7 +20,20 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
+        <activity
+            android:name="com.example.material_app.view.API.ApiActivity"
+            android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name="com.example.material_app.view.API.ApiBottomActivity"
+            android:exported="true">
+
+    </activity>
     </application>
 
 </manifest>

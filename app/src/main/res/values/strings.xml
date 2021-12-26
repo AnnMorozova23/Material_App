@@ -9,5 +9,11 @@
     <string name="search">Search</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="System">System</string>
+    <string name="Mars">Mars</string>
+    <string name="Earth">Earth</string>
+    <string name="Murzik">MURZIK</string>
+    <string name="Kuki">KUKI</string>
+    <string name="Tom">TOM</string>
 
 </resources>
