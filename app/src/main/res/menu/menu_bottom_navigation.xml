@@ -2,15 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_one"
-        android:icon="@drawable/ic_archive"
-        android:title="На экран 1" />
+        android:icon="@drawable/ic_earth"
+        android:title="@string/Earth" />
     <item
         android:id="@+id/navigation_two"
-        android:icon="@drawable/ic_send"
-        android:title="На экран 2" />
+        android:icon="@drawable/is_system"
+        android:title="@string/solar_system" />
     <item
         android:id="@+id/navigation_third"
-        android:icon="@drawable/ic_search"
-        android:title="На экран 3" />
+        android:icon="@drawable/ic_baseline_animation_24"
+        android:title="@string/animations" />
+
+    <item
+        android:id="@+id/navigation_five"
+        android:icon="@drawable/ic_wikipedia"
+        android:title="Recycler" />
 
 </menu>

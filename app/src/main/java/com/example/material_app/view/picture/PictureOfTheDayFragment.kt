@@ -6,19 +6,26 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
+import android.widget.FrameLayout
 import androidx.activity.OnBackPressedCallback
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.ArcMotion
+import androidx.transition.ChangeBounds
+import androidx.transition.TransitionManager
 import coil.load
 import com.example.material_app.R
 import com.example.material_app.databinding.FragmentMainBinding
-import com.example.material_app.view.API.ApiActivity
-import com.example.material_app.view.API.ApiBottomActivity
 import com.example.material_app.view.MainActivity
+import com.example.material_app.view.api.ApiActivity
+import com.example.material_app.view.api.ApiBottomActivity
 import com.example.material_app.view.chips.SettingsFragment
+import com.example.material_app.view.constraint.ConstraintFragment
 import com.example.material_app.viewmodel.PictureOfTheDayState
 import com.example.material_app.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
@@ -57,11 +64,33 @@ class PictureOfTheDayFragment : Fragment() {
             })
         }
 
+        var isDirectionRight = false
         binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
-            when(checkedId){
-                R.id.yestrday ->{viewModel.sendServerRequest(takeDate(-1))}
-                R.id.today ->{viewModel.sendServerRequest()}
+            isDirectionRight = !isDirectionRight
+            when (checkedId) {
+                R.id.yestrday -> {
+                    viewModel.sendServerRequest(takeDate(-1))
+                }
+                R.id.today -> {
+                    viewModel.sendServerRequest()
+                }
+
             }
+            val params = binding.chipGroup.layoutParams as ConstraintLayout.LayoutParams
+            if (isDirectionRight) {
+                params.height = ConstraintLayout.LayoutParams.MATCH_PARENT
+            } else {
+                params.height = ConstraintLayout.LayoutParams.WRAP_CONTENT
+            }
+
+            val transition = ChangeBounds()
+            val path = ArcMotion()
+            transition.setPathMotion(path)
+            transition.duration = 2000
+            TransitionManager.beginDelayedTransition(binding.chipGroup,transition)
+
+            binding.chipGroup.layoutParams = params
+
         }
 
         setBottomAppBar()
@@ -120,12 +149,13 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.api_activity ->
-            startActivity(Intent(requireContext(), ApiActivity::class.java))
+                startActivity(Intent(requireContext(), ApiActivity::class.java))
 
             R.id.api_bottom_activity -> {
                 startActivity(Intent(requireContext(), ApiBottomActivity::class.java))
             }
             R.id.app_bar_settings -> requireActivity().supportFragmentManager.beginTransaction()
+                .addToBackStack("")
                 .replace(
                     R.id.container,
                     SettingsFragment.newInstance()

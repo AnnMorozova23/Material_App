@@ -1,8 +1,6 @@
-package com.example.material_app.view.API
+package com.example.material_app.view.api
 
-import KukiFragment
-import MurzikFragment
-import TomFragment
+
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter

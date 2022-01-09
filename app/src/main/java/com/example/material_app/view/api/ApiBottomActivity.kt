@@ -1,4 +1,4 @@
-package com.example.material_app.view.API
+package com.example.material_app.view.api
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
