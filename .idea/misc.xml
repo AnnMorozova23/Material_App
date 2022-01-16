@@ -27,6 +27,8 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/drawable/is_system.xml" value="0.2703125" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/drawable/swipe_indicator_active.xml" value="0.2703125" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/drawable/swipe_indicator_passive.xml" value="0.2703125" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/font/almendra_italic.xml" value="0.140625" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/font/monofett.xml" value="0.15989583333333332" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/layout/activity_animations.xml" value="0.12291666666666666" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/layout/activity_animations_recycler_item.xml" value="0.115625" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/layout/activity_api.xml" value="0.25416666666666665" />
@@ -38,7 +40,7 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/layout/activity_recycler.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/layout/activity_recycler_item_earth.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/layout/activity_recycler_item_header.xml" value="0.13796296296296295" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/layout/activity_recycler_item_mars.xml" value="0.176" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/layout/activity_recycler_item_mars.xml" value="0.4" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/layout/bottom_navigation_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/Material_App/app/src/main/res/layout/fragment_animation.xml" value="0.115625" />

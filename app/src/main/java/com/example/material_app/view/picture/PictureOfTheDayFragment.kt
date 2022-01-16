@@ -2,8 +2,16 @@ package com.example.material_app.view.picture
 
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.text.Html
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.BulletSpan
+import android.text.style.ImageSpan
 import android.util.Log
 import android.view.*
 import android.widget.FrameLayout
@@ -87,7 +95,7 @@ class PictureOfTheDayFragment : Fragment() {
             val path = ArcMotion()
             transition.setPathMotion(path)
             transition.duration = 2000
-            TransitionManager.beginDelayedTransition(binding.chipGroup,transition)
+            TransitionManager.beginDelayedTransition(binding.chipGroup, transition)
 
             binding.chipGroup.layoutParams = params
 
@@ -122,6 +130,31 @@ class PictureOfTheDayFragment : Fragment() {
                     placeholder(R.drawable.ic_no_photo_vector)
                     binding.includeBottomSheet.bottomSheetDescriptionHeader.text =
                         pictureOfTheDayResponseData.explanation
+//                    binding.includeBottomSheet.bottomSheetDescriptionHeader.typeface =
+//                        Typeface.createFromAsset(requireContext().assets, "a.ttf")
+
+                    val spannableMutable =
+                        SpannableStringBuilder("A galaxy is a gravitationally bound system of " +
+                                "stars, stellar remnants, interstellar gas, dust, and dark matter. The word is derived from the Greek galaxias," +
+                                " literally, a reference to the Milky Way. Galaxies range in size from dwarfs with just a few hundred million" +
+                                "stars to giants with one hundred trillion stars, each orbiting its galaxy's center of mass.")
+
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                        spannableMutable.setSpan(
+                            BulletSpan(
+                                20,
+                                ContextCompat.getColor(requireContext(), R.color.color_green_dark),
+                                10
+                            ),
+                            0, 30, Spannable.SPAN_INCLUSIVE_INCLUSIVE
+                        )
+
+
+
+                        binding.textView.text = spannableMutable
+                    }
+
                 }
             }
         }

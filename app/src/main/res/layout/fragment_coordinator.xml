@@ -57,6 +57,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/rosario_italic"
                 android:lineSpacingExtra="8dp"
                 android:text="@string/lorem"
                 android:textSize="20sp" />
