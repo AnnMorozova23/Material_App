@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, PictureOfTheDayFragment.newInstance()).commit()
         }
+
+
     }
 
     override fun onBackPressed() {

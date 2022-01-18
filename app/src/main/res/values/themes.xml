@@ -34,4 +34,9 @@
     </style>
 
 
+    <style name="MyTheme.Splash">
+        <item name="android:windowBackground">@drawable/splash_background_drawable</item>
+    </style>
+
+
 </resources>

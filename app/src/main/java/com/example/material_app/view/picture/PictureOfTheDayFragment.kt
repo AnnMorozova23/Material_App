@@ -38,6 +38,10 @@ import com.example.material_app.viewmodel.PictureOfTheDayState
 import com.example.material_app.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import smartdevelop.ir.eram.showcaseviewlib.GuideView
+import smartdevelop.ir.eram.showcaseviewlib.config.DismissType
+import smartdevelop.ir.eram.showcaseviewlib.config.Gravity
+import smartdevelop.ir.eram.showcaseviewlib.listener.GuideListener
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -99,9 +103,25 @@ class PictureOfTheDayFragment : Fragment() {
 
             binding.chipGroup.layoutParams = params
 
+
         }
 
         setBottomAppBar()
+
+
+        val builder = GuideView.Builder(requireContext())
+            .setTitle("Новая фича")
+            .setContentText("Мы добавили")
+            .setGravity(Gravity.center)
+            .setTargetView(binding.inputEditText)
+            .setDismissType(DismissType.anywhere)
+            .setGuideListener(object : GuideListener {
+                override fun onDismiss(view: View?) {
+
+                }
+            })
+        builder.build().show()
+
 
     }
 
